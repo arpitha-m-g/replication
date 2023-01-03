@@ -40,7 +40,8 @@ node {
            "result": "{currentbuild.duration}"
            }
            '''
-      //writeFile(file: 'output.json', text:json_output)  
+      writeFile(file: 'output.json', text:json_output)  
+      sh "cat output.json"
   }
 }
             
