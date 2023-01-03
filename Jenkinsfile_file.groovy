@@ -29,18 +29,16 @@ properties([parameters([
 	])
 ])
 node {
-  stage("Checkout scm") {
+    stage("Checkout scm") {
       checkout scm
-  }
-  stage("Display output"){
-      def json_output = '''
-          {
-           "author" : ${env.BUILD_USER_ID},
-           "environment" : param.environment,
-           "result": ${currentbuild.duration}
-           }
-           '''
-      //writeFile(file: 'output.json', text:json_output) 
-  }
+    }
+    stage("Display output"){
+        def json_output = '''
+            {
+             "author" : ${env.BUILD_USER_ID},
+             "result": ${currentbuild.duration}
+             }
+             '''
+    }
 }
             
