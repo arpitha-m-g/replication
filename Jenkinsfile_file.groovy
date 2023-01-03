@@ -35,13 +35,13 @@ node {
   stage("Display output"){
       def json_output = '''
           {
-           "author" : "${env.BUILD_USER_ID}",
-           "environment" : "param.environment",
-           "result": "{currentbuild.duration}"
+           "author" : ${env.BUILD_USER_ID},
+           "environment" : param.environment,
+           "result": ${currentbuild.duration}
            }
            '''
-      writeFile(file: 'output.json', text:json_output)  
-      sh "cat output.json"
+      // writeFile(file: 'output.json', text:json_output)  
+
   }
 }
             
