@@ -29,6 +29,9 @@ properties([parameters([
 	])
 ])
 node {
+  stage("Checkout scm") {
+      checkout scm
+  }
   stage("Display output"){
       def json_output = '''
           {
