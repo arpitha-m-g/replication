@@ -28,7 +28,7 @@ properties([parameters([
 		]
 	])
 ])
-node(node_label) {
+node {
   stage("Checkout Scm"){
       checkout scm
   }
