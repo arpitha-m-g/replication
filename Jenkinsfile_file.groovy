@@ -22,7 +22,7 @@ properties([parameters([
 				oldScript: '', 
 				sandbox: false, 
 				script: 
-				        'return ["npe", "uat", "prod", "qa"]'
+				        'return ["npe", "uat", "prod"]'
 				]
 			]
 		]
