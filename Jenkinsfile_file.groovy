@@ -2,10 +2,7 @@ import java.time.*
 import java.time.format.DateTimeFormatter
 import groovy.json.JsonSlurper 
 
-def namespaces= readFile "${env.WORKSPACE}/dummy.json"
-def jsonSlurper = new JsonSlurper()
-def object = jsonSlurper.parseText(namespaces)
-echo "Data is: ${object}"
+
 
 properties([parameters([
     [$class: 'ChoiceParameter', 
@@ -39,8 +36,14 @@ node {
       checkout scm
     }
     stage("Display output"){  
+	    get_namespace()
 	    def out_data = '{"result": "'+"${currentBuild.currentResult}"+'", "environment":"'+"${params.environment}" +'" }'
 	    writeFile (file: 'outpur_file.txt', text: out_data)	   
     }
 }
-            
+def get_namespace(){
+	def namespaces= readFile "${env.WORKSPACE}/dummy.json"
+	def jsonSlurper = new JsonSlurper()
+	def object = jsonSlurper.parseText(namespaces)
+	echo "Data is: ${object}"
+}          
