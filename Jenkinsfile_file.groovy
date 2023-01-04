@@ -1,8 +1,6 @@
 import java.time.*
 import java.time.format.DateTimeFormatter
-import groovy.json.JsonSlurper 
 
-def object_data = get_namespace().env
 
 properties([parameters([
     
@@ -25,7 +23,12 @@ properties([parameters([
 			    classpath: [], 
 				oldScript: '', 
 				sandbox: false, 
-				script: object_data
+				script: '''
+					import groovy.json.JsonSlurper 
+					//def namespaces= readFile "${env.WORKSPACE}/dummy.json"
+					def jsonSlurper = new JsonSlurper()
+					def object = jsonSlurper.parseText('{ "name": "John", "env" : "1"}')
+					return object.env
 				]
 			]
 		]
