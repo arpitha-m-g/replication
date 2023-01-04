@@ -5,7 +5,7 @@ import groovy.json.JsonSlurper
 
 
 properties([parameters([
-    choice(name: 'namespace', choices: object_data.join('\n'), description: "choose the namspace"),
+    
     [$class: 'ChoiceParameter', 
 	    choiceType: 'PT_SINGLE_SELECT', 
 		filterLength: 1, 
@@ -50,4 +50,5 @@ def get_namespace(){
 	def jsonSlurper = new JsonSlurper()
 	def object = jsonSlurper.parseText(namespaces)
 	echo "Data is: ${object}"
+	return object
 }          
