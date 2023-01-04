@@ -33,7 +33,8 @@ node {
       checkout scm
     }
     stage("Display output"){  
-	    writeFile (file: 'outpur_file.txt', text: '"author" : env.BUILD_NUMBER ')	   
+	    def author = env.BUILD_USER_ID
+	    writeFile (file: 'outpur_file.txt', text: '"author" : $author')	   
     }
 }
             
