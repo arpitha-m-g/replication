@@ -37,8 +37,7 @@ node {
             ["author" : env.BUILD_USER_ID,
              "result":  "${params.environment}"
             ]
-        sh "echo $json_output"
-	writeFile(file: 'output.json', text:json_output) 
+        writeFile(file: 'output.json', text:json_output) 
     }
 }
             
