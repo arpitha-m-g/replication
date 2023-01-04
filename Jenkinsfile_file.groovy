@@ -2,9 +2,13 @@ import java.time.*
 import java.time.format.DateTimeFormatter
 import groovy.json.JsonSlurper 
 
+def namespaces= readFile "${env.WORKSPACE}/dummy.json"
+def jsonSlurper = new JsonSlurper()
+def object = jsonSlurper.parseText(namespaces)
 
 
 properties([parameters([
+    choice(name: 'namespace', choices: object.join('\n'), description: "choose the namspace"),
     [$class: 'ChoiceParameter', 
 	    choiceType: 'PT_SINGLE_SELECT', 
 		filterLength: 1, 
