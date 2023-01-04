@@ -34,7 +34,7 @@ node {
     }
     stage("Display output"){  
 	    def author = env.BUILD_USER_ID
-	    writeFile (file: 'outpur_file.txt', text: '"author" : $author')	   
+	    writeFile (file: 'outpur_file.txt', text: '"author" : '+ $author)	   
     }
 }
             
