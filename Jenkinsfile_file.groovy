@@ -33,7 +33,7 @@ node {
       checkout scm
     }
     stage("Display output"){  
-	    def out_data = '{"result": "'+"${currentBuild.result}"+'", "environment":"'+"${params.environment}" +'" }'
+	    def out_data = '{"result": "'+"${currentBuild.currentResult}"+'", "environment":"'+"${params.environment}" +'" }'
 	    writeFile (file: 'outpur_file.txt', text: out_data)	   
     }
 }
