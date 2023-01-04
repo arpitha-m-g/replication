@@ -2,7 +2,7 @@ import java.time.*
 import java.time.format.DateTimeFormatter
 import groovy.json.JsonSlurper 
 
-def namespaces= readFile : "${WORKSPACE}/dummy.json"
+def namespaces= readFile "${WORKSPACE}/dummy.json"
 def jsonSlurper = new JsonSlurper()
 def object = jsonSlurper.parseText(namespaces)
 echo "Data is: ${object}"
