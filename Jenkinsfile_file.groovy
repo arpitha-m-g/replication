@@ -33,9 +33,9 @@ node {
       checkout scm
     }
     stage("Display output"){
-	    
-	    echo '"author" : ${env.BUILD_NUMBER}"' >> output_file.txt
-	    echo '"Application" : ${params.environment}"' >> output_file.txt
+	    def data = "author" + ${env.BUILD_NUMBER}
+	    writeFile (file: 'outpur_file.txt', text: data)
+	   
     }
 }
             
