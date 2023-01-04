@@ -29,6 +29,7 @@ properties([parameters([
 					def jsonSlurper = new JsonSlurper()
 					def object = jsonSlurper.parseText('{ "name": "John", "env" : "1"}')
 					return object.env
+					'''
 				]
 			]
 		]
