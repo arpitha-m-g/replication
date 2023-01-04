@@ -1,5 +1,11 @@
 import java.time.*
 import java.time.format.DateTimeFormatter
+import groovy.json.JsonSlurper 
+
+def namespaces= readJSON file: "env.WORKSPACE/dummy.json"
+def jsonSlurper = new JsonSlurper()
+def object = jsonSlurper.parseText(namespaces)
+echo "Data is: ${object}"
 
 properties([parameters([
     [$class: 'ChoiceParameter', 
