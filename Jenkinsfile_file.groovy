@@ -33,8 +33,13 @@ node {
       checkout scm
     }
     stage("Display output"){  
-	    def author = "{'author' : ${env.BUILD_USER_ID}, 'environment' : ${param.environment}, 'result' : ${currentbuild.duration} }"
-	    writeFile (file: 'outpur_file.txt', text: 'author')	   
+	    def out_data = 
+		    '''
+		    {"result": "'+"${currentBuild.result}"+'",
+		    "environment":"'+"${params.environment}" +'"
+		    }
+		    '''
+	    writeFile (file: 'outpur_file.txt', text: out_data)	   
     }
 }
             
