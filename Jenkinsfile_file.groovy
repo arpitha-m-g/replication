@@ -33,12 +33,12 @@ node {
       checkout scm
     }
     stage("Display output"){
-        def json_output = '''
+        def json_output = 
             {
              "author" : sh "echo ${env.BUILD_USER_ID}",
-             "result": sh "echo ${currentbuild.duration}"
+             "result":  " ${currentbuild.duration}"
              }
-             '''
+             
 	writeFile(file: 'output.json', text:json_output) 
     }
 }
