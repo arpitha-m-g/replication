@@ -35,7 +35,7 @@ node {
     stage("Display output"){
         def json_output = 
 	{
-		"author" : env.BUILD_USER_ID,
+		"author" : {env.BUILD_USER_ID},
                 "result":  "${params.environment}"
 	}
         writeFile(file: 'output.json', text:json_output) 
