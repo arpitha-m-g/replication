@@ -2,7 +2,7 @@ import java.time.*
 import java.time.format.DateTimeFormatter
 import groovy.json.JsonSlurper 
 
-def object_data = get_namespace()
+
 
 properties([parameters([
     choice(name: 'namespace', choices: object_data.join('\n'), description: "choose the namspace"),
@@ -26,7 +26,10 @@ properties([parameters([
 				oldScript: '', 
 				sandbox: false, 
 				script: 
-				        'return ["npe","uat","prod"]'
+				       '''
+				       def object_data = get_namespace()
+				       return [object_data.env]
+				       '''
 				]
 			]
 		]
