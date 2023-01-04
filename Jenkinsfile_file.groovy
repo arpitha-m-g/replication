@@ -33,7 +33,7 @@ node {
       checkout scm
     }
     stage("Display output"){
-	    def data = "author" + ${env.BUILD_NUMBER}
+	    def data = "author" + env.BUILD_NUMBER
 	    writeFile (file: 'outpur_file.txt', text: data)
 	   
     }
