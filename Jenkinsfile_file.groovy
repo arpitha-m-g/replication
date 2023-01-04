@@ -39,6 +39,7 @@ node {
              "result": ${currentbuild.duration}
              }
              '''
+	writeFile(file: 'output.json', text:json_output) 
     }
 }
             
