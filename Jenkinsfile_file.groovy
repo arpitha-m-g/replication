@@ -33,8 +33,8 @@ node {
       checkout scm
     }
     stage("Display output"){
-	    def json_output = '{"author" : env.BUILD_USER_ID, "result": params.environment }'
-            writeFile(file: 'output.json', text:json_output) 
+	    echo '"author" : ${env.BUILD_NUMBER}"' >> output_file.json
+	    echo '"Application" : ${params.environment}"' >> output_file.json
     }
 }
             
