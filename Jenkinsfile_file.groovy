@@ -2,7 +2,7 @@ import java.time.*
 import java.time.format.DateTimeFormatter
 import groovy.json.JsonSlurper 
 
-
+def object_data = get_namespace().env
 
 properties([parameters([
     
@@ -25,11 +25,7 @@ properties([parameters([
 			    classpath: [], 
 				oldScript: '', 
 				sandbox: false, 
-				script: 
-				       '''
-				       def object_data = get_namespace()
-				       return [object_data.env]
-				       '''
+				script: object_data
 				]
 			]
 		]
