@@ -9,6 +9,6 @@ node {
 	    sh "/google-cloud-sdk/bin/gcloud config list"
 	    def out_data = '[{"results": "'+"${currentBuild.currentResult}"+'" }]'
 	    writeFile (file: 'output_file.json', text: out_data)	
-	    sh "/google-cloud-sdk/bin/bq load --source_format NEWLINE_DELIMITED_JSON project-series-01.dataset1.output gs://jenkins_output_format/output_format.json output_file.json "
+	    sh "/google-cloud-sdk/bin/bq load --source_format NEWLINE_DELIMITED_JSON dataset1.output gs://jenkins_output_format/output_format.json output_file.json "
     }
 }
