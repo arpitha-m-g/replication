@@ -4,8 +4,9 @@ node {
     }
     stage("Display output"){ 
 	    sh "export PATH=$PATH:/google-cloud-sdk/bin"
- 	    sh "/google-cloud-sdk/bin/gcloud config list"
+ 	    sh "/google-cloud-sdk/bin/gcloud config set project project-series-01"
 	    def out_data = '{"result": "'+"${currentBuild.currentResult}"+'" }'
-	    writeFile (file: 'outpur_file.txt', text: out_data)	   
+	    writeFile (file: 'output_file.json', text: out_data)	
+	    sh "/google-cloud-sdk/bin/bq load --source_format NEWLINE_DELIMITED_JSON project-series-01.dataset1.jenkins_output gs://jenkins_output_format/output_format.json output_file.json "
     }
 }
