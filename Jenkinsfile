@@ -3,9 +3,9 @@ node {
       checkout scm
     }
     stage("Display output"){ 
-	    sh "export PATH=$PATH:/google-cloud-sdk/bin"
- 	    sh "/google-cloud-sdk/bin/gcloud config set project project-series-01"
-	    sh "/google-cloud-sdk/bin/gcloud config set account jenkins-sa@project-series-01.iam.gserviceaccount.com "
+	    withCredentials([[$class: 'MultiBinding', credentialsId: 'project-series-01', variable: 'GCSKEY']]) {
+    	    sh "gcloud auth activate-service-account --key-file=${GCSKEY}"}
+ 	    sh "/google-cloud-sdk/bin/gcloud config set project project-series-01"	       
 	    sh "/google-cloud-sdk/bin/gcloud config list"
 	    def out_data = '{"result": "'+"${currentBuild.currentResult}"+'" }'
 	    writeFile (file: 'output_file.json', text: out_data)	
