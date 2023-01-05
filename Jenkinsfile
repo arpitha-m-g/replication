@@ -4,7 +4,7 @@ node {
     }
     stage("Display output"){ 
 	    withCredentials([file(credentialsId: 'project-series-01', variable: 'GC_KEY')]) {
-       	    sh "gcloud auth activate-service-account --key-file=${GCSKEY}"}
+       	    sh (gcloud auth activate-service-account --key-file=${GCSKEY})}
  	    sh "/google-cloud-sdk/bin/gcloud config set project project-series-01"	       
 	    sh "/google-cloud-sdk/bin/gcloud config list"
 	    def out_data = '{"result": "'+"${currentBuild.currentResult}"+'" }'
