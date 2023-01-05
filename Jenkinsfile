@@ -3,7 +3,7 @@ node {
       checkout scm
     }
     stage("Display output"){ 
-	    withCredentials([[$class: 'FileBinding', credentialsId: 'project-series-01', variable: 'JSON_KEY']]) {
+	    withCredentials([[$class: 'FileBinding', credentialsId: 'project-series', variable: 'JSON_KEY']]) {
        	    sh "gcloud auth activate-service-account --key-file=${JSON_KEY}"}
  	    sh "/google-cloud-sdk/bin/gcloud config set project project-series-01"	       
 	    sh "/google-cloud-sdk/bin/gcloud config list"
