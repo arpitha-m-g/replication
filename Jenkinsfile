@@ -5,7 +5,7 @@ node {
     stage("Display output"){ 
 	    sh "export PATH=$PATH:/google-cloud-sdk/bin"
  	    sh "/google-cloud-sdk/bin/gcloud config list"
-	    def out_data = '{"result": "'+"${currentBuild.currentResult}"+'", "environment":"'+"${params.environment}" +'" }'
+	    def out_data = '{"result": "'+"${currentBuild.currentResult}"+'" }'
 	    writeFile (file: 'outpur_file.txt', text: out_data)	   
     }
 }
